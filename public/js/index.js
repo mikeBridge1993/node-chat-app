@@ -3,10 +3,10 @@ socket.on('connect', function () {
     document.getElementById('socketConnection').innerHTML = "Connected to a server."
     
     
-    socket.emit('createMessage', {
-      message: document.getElementById('email-input').value,
-      text: document.getElementById('text-input').value
-    });
+//    socket.emit('createMessage', {
+//      message: document.getElementById('email-input').value,
+//      text: document.getElementById('text-input').value
+//    });
 
 });
 
@@ -24,6 +24,7 @@ socket.on('disconnect', function () {
 //});
 
 socket.on('newMessage', function (message) {
-    document.getElementById('socketConnection').innerHTML = "New message received.<br>" + "From: " + message.from + " <br>" + "Content: " + message.text + " <br>"
+    document.getElementById('socketConnection').innerHTML = document.getElementById('socketConnection').innerHTML +
+        '<br><div class="lead chat-message bg-info text-light my-1 py-5 offset-4 col-4">'+ "New message received.<br>" + "From: " + message.from + " <br>" + "Content: " + message.text + "</div><br>";       
 });
 

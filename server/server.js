@@ -29,14 +29,19 @@ io.on('connection', (socket) => {
 //        console.log("Create Email", email);
 //    });
     
-    socket.emit('newMessage', {
-        from: "carlitos@leaseans-flyseans.com",
-        text: "Hey dude, Call me ASAP regarding the ACM and the fuel nozzles",
-        createdAt: 123
-    });
-    
+//    socket.emit('newMessage', {
+//        from: "carlitos@leaseans-flyseans.com",
+//        text: "Hey dude, Call me ASAP regarding the ACM and the fuel nozzles",
+//        createdAt: 123
+//    });
+//    
     socket.on('createMessage', (message) => {
         console.log("Create message", message);
+        io.emit('newMessage', { //send message created by a specific user, back to all the users connected
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
     });
     
     socket.on('disconnect', () => {
