@@ -9,10 +9,6 @@ socket.on('welcomeMessage', function (welcome) {
     document.getElementById('socketConnection').innerHTML += "<br><span style='color:grey'> From: </span>" + welcome.from + " <br>" + "<span style='color:grey'> Content: </span>" + welcome.text + " <br>"
 });
 
-socket.on('welcomeMessageBroad', function (welcome) {
-    document.getElementById('socketConnection').innerHTML += "<span style='color:grey'> From: </span>" + welcome.from + " <br>" + "<span style='color:grey'> Content: </span>" + welcome.text + " <br>"
-});
-
 socket.on('disconnect', function () {
     document.getElementById('socketConnection').innerHTML = "Disconnected from the server."
 });
