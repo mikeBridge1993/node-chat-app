@@ -31,29 +31,37 @@
         </div>
         <div class="row">
             <div class="col text-center">
-                <div class="lead bg-info text-light my-1 py-5" id="socketConnection"></div>
+                <div class="lead bg-light text-primary my-1 py-5" id="socketConnection"></div>
             </div>      
         </div>
         <div class="row">
-            <div class="col text-center">
-                <div class="input-area bg-primary">
-                    <div class="form-group row pt-3">
-                      <label for="example-email-input" class="col-4 col-form-label">Email</label>
-                      <div class="col-7">
-                        <input class="form-control" type="email" id="email-input" value="tiago.martins@leaseas.com">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="example-text-input" class="col-4 col-form-label">Text</label>
-                      <div class="col-7 pb-3">
-                        <input class="form-control" type="text" id="text-input" value="Limoges needs: fuel nozzles*1000">
-                      </div>
-                    </div>
-                </div>
-            </div>      
+            <div class="col text-center mb-5">
+                <form id="message-form">
+                    <div class="input-area bg-primary">
+<!--
+                        <div class="form-group row pt-3">
+                          <label for="example-email-input" class="col-4 col-form-label">Email</label>
+                          <div class="col-7">
+                            <input class="form-control" type="email" id="email-input" placeholder="Please identify yourself">
+                          </div>
+                        </div>
+-->
+                        <div class="form-group row mt-3 pt-5">
+                          <label for="example-text-input" class="col-4 col-form-label">Text</label>
+                          <div class="col-7">
+                            <input class="form-control" type="text" id="text-input" placeholder="Please write your message">
+                          </div>
+                        </div>
+                    <button type="submit" class="btn btn-success mb-3" id="btn">Submit</button>
+                    </div>  
+                </form>          
+            </div>
         </div>
     </div>
-        <script src="/socket.io/socket.io.js" ></script>
-        <script src ="/js/index.js"></script>       
+    <script src="/socket.io/socket.io.js" ></script>
+    <script src ="/js/libs/jquery-3.3.1.min.js"></script> 
+    <script src ="/js/index.js"></script>   
+        
+          
 </body>
 </html>

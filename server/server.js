@@ -9,10 +9,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-//
-//app.get('/', (req, res) => {
-////    res.sendFile(path.join(__dirname, '../public/index.html'));
-//});
+
+const {generateMessage} = require("./utils/message.js");
 
 app.use(express.static(publicPath));
 
@@ -20,36 +18,20 @@ io.on('connection', (socket) => {
     
     console.log("Client connected");
     
-//    socket.emit('newEmail', {
-//        from: "carlitos@leaseans-flyseans.com",
-//        text: "Hey dude, Call me ASAP regarding the ACM and the fuel nozzles"
-//    });
-//    
-//    socket.on('createEmail', (email) => {
-//        console.log("Create Email", email);
-//    });
+    socket.emit('welcomeMessage', generateMessage("Admin", "Welcome to the chat app"));
     
-//    socket.emit('newMessage', {
-//        from: "carlitos@leaseans-flyseans.com",
-//        text: "Hey dude, Call me ASAP regarding the ACM and the fuel nozzles",
-//        createdAt: 123
-//    });
-//    
-    socket.on('createMessage', (message) => {
+    socket.broadcast.emit('welcomeMessageBroad',  generateMessage("Admin", "One user joined the session"));
+
+    socket.on('createMessage', (message,  callback) => {
         console.log("Create message", message);
-        io.emit('newMessage', { //send message created by a specific user, back to all the users connected
-            from: message.from,
-            text: message.text,
-            createdAt: new Date().getTime()
-        });
-    });
+        io.emit('newMessage', generateMessage(message.from, message.text)); //send message created by a specific user, back to all the users connected
+        callback('This is from the Server'); //runs the function passed as argument by the user i.e. acknowledgment
+     });   
     
     socket.on('disconnect', () => {
         console.log("Client disconnected");
     });
-    
-    
-    
+
 });
 
 server.listen(port, () => {
