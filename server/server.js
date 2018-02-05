@@ -20,9 +20,30 @@ io.on('connection', (socket) => {
     
     console.log("Client connected");
     
+//    socket.emit('newEmail', {
+//        from: "carlitos@leaseans-flyseans.com",
+//        text: "Hey dude, Call me ASAP regarding the ACM and the fuel nozzles"
+//    });
+//    
+//    socket.on('createEmail', (email) => {
+//        console.log("Create Email", email);
+//    });
+    
+    socket.emit('newMessage', {
+        from: "carlitos@leaseans-flyseans.com",
+        text: "Hey dude, Call me ASAP regarding the ACM and the fuel nozzles",
+        createdAt: 123
+    });
+    
+    socket.on('createMessage', (message) => {
+        console.log("Create message", message);
+    });
+    
     socket.on('disconnect', () => {
         console.log("Client disconnected");
     });
+    
+    
     
 });
 
