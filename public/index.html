@@ -9,19 +9,40 @@
     <div class="container text-white">
         <div class="row my-0 py-0">
             <div class="col text-center">
-                <p class="lead bg-primary my-0 py-5">Hello World!</p>
+                <p class="lead bg-primary my-1 py-5">Hello World!</p>
             </div>
         </div>
         <div class="row my-0 py-0">
             <div class="col text-center">
-                <p class="lead bg-danger my-0 py-5">Welcome,</p>
+                <p class="lead bg-danger my-1 py-5">Welcome,</p>
             </div>
         </div>
         <div class="row my-0 py-0">
             <div class="col text-center">
-                <p class="lead bg-warning my-0 py-5">to the chat APP!</p>
+                <p class="lead bg-warning my-1 py-5">to the chat APP!</p>
             </div>      
-        </div>       
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p class="lead bg-success my-1 py-5">Socket.IO!</p>
+            </div>      
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <p class="lead bg-info text-light my-1 py-5" id="socketConnection"></p>
+            </div>      
+        </div>
+        <script src="/socket.io/socket.io.js" ></script>
+        <script>
+                    var socket = io();
+                    socket.on('connect', () => {
+                       document.getElementById('socketConnection').innerHTML = "Connected to a server."
+                    });
+            
+                    socket.on('disconnect', () => {
+                       document.getElementById('socketConnection').innerHTML = "Disconnected from the server."
+                    });
+        </script>       
     </div>
 </body>
 </html>
