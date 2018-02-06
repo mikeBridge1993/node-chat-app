@@ -18,9 +18,9 @@ io.on('connection', (socket) => {
     
     console.log("Client connected");
     
-    socket.emit('welcomeMessage', generateMessage("Admin", "Welcome to the chat app"));
+    socket.emit('newMessage', generateMessage("Admin", "Welcome to the chat app"));
     
-    socket.broadcast.emit('welcomeMessage',  generateMessage("Admin", "One user joined the session"));
+    socket.broadcast.emit('newMessage',  generateMessage("Admin", "One user joined the session"));
     
     socket.on('createLocationMessage', (coords) => {
         console.log(coords);
