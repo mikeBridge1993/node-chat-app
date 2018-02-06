@@ -59,12 +59,35 @@
             </div>    
         </div>   
     </div>
-    <!-- Modal -->
+  
+    
+    <script id="message-template" type="text/template">
+        <li class="media mt-1 pt-4 mb-1 py-0">
+            <img class="d-flex" src="/img/user.png" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">{{from}}</h5>
+                <h6 class="mt-0 mb-1">{{createdAt}}</h6>
+                {{text}}
+            </div>
+        </li>
+    </script>
+    <script id="location-message-template" type="text/template">
+        <li class="media mt-1 pt-4 mb-1 py-0">
+            <img class="d-flex" src="/img/user.png" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">{{from}}</h5>
+                <h6 class="mt-0 mb-1">{{createdAt}}</h6>
+                <a target="_blank" href="{{url}}" class="mt-0 mb-1">My current location</a>
+            </div>
+        </li>
+    </script>
     <script src="/socket.io/socket.io.js" ></script>
     <script src ="/js/libs/jquery-3.3.1.min.js"></script> 
     <script src ="/js/libs/moment.js"></script> 
+    <script src ="/js/libs/mustache.js"></script> 
     <script src ="bootstrap/js/bootstrap.min.js"></script> 
-    <script src ="/js/index.js"></script> 
+    <script src ="/js/index.js"></script>
+    <!-- Modal -->
     <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
