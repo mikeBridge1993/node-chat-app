@@ -9,43 +9,11 @@
 
 <body>
     <div class="container text-white">
-        <div class="row my-0 py-0">
-            <div class="col text-center">
-                <p class="lead bg-primary my-1 py-5">Hello World!</p>
-            </div>
-        </div>
-        <div class="row my-0 py-0">
-            <div class="col text-center">
-                <p class="lead bg-danger my-1 py-5">Welcome,</p>
-            </div>
-        </div>
-        <div class="row my-0 py-0">
-            <div class="col text-center">
-                <p class="lead bg-warning my-1 py-5">to the chat APP!</p>
-            </div>      
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <p class="lead bg-success my-1 py-5">Socket.IO!</p>
-            </div>      
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <div class="lead bg-light text-primary my-1 py-5" id="socketConnection"></div>
-            </div>      
-        </div>
-        <div class="row">
+<!--
+       <div class="row">
             <div class="col text-center mb-5">
                 <form id="message-form">
                     <div class="input-area bg-primary">
-<!--
-                        <div class="form-group row pt-3">
-                          <label for="example-email-input" class="col-4 col-form-label">Email</label>
-                          <div class="col-7">
-                            <input class="form-control" type="email" id="email-input" placeholder="Please identify yourself">
-                          </div>
-                        </div>
--->
                         <div class="form-group row mt-3 pt-5">
                           <label for="example-text-input" class="col-4 col-form-label">Text</label>
                           <div class="col-7">
@@ -57,11 +25,54 @@
                 </form>          
             </div>
         </div>
+-->
+        <div class="row mt-5" id="ul-row">
+            <div class="col-6 text-center">
+                <div class="lead bg-light text-primary my-1 py-5" id="socketConnection">
+                    <ul class="list-unstyled ml-5 mr-5", id="media-list">
+                    </ul>
+                </div>              
+            </div>
+            <div class="col-6 text-center">
+                <div class="lead bg-light text-primary">
+                    <div class="input-area bg-primary">
+                        <form id="message-form">
+                            <div class="form-group row my-1 pt-5">
+                                <div class="col-10 offset-1">
+                                    <input class="form-control" type="text" id="text-input" placeholder="Please write your message">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mb-3 mt-1" id="btn">Send Message</button>
+                        </form>
+                        <button type="submit" class="btn btn-success mb-3 mt-1" id="location">Send Location</button>
+                    </div> 
+                </div>              
+            </div>    
+        </div>
+        
     </div>
+    <!-- Modal -->
     <script src="/socket.io/socket.io.js" ></script>
     <script src ="/js/libs/jquery-3.3.1.min.js"></script> 
-    <script src ="/js/index.js"></script>   
-        
-          
-</body>
+    <script src ="bootstrap/js/bootstrap.min.js"></script> 
+    <script src ="/js/index.js"></script> 
+    <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modal-text">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+</body>            
 </html>
