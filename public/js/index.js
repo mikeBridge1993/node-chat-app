@@ -8,7 +8,7 @@ socket.on('connect', function () {
 socket.on('welcomeMessage', function (welcome) {
 //   document.getElementById('socketConnection').innerHTML += "<br><span style='color:grey'> From: </span>" + welcome.from + " <br>" + "<span style='color:grey'> Content: </span>" + welcome.text + " <br>"
     document.getElementById('media-list').innerHTML +=
-    '<li class="media">'+
+    '<li class="media mt-1 pt-4">'+
     '<img class="d-flex" src="/img/user.png" alt="Generic placeholder image">'+
     '<div class="media-body">'+
     '<h5 class="mt-0 mb-1">'+welcome.from+'</h5>'+
@@ -18,7 +18,7 @@ socket.on('welcomeMessage', function (welcome) {
 });
 
 socket.on('disconnect', function () {
-    document.getElementById('socketConnection').innerHTML = "Disconnected from the server."
+   document.getElementById('media-list').innerHTML += "Disconnected from the server."
 });
 
 
@@ -27,7 +27,7 @@ socket.on('newMessage', function (message) {
 //    document.getElementById('socketConnection').innerHTML +=
 //        '<br><div class="lead chat-message bg-light text-primary my-1 py-5 offset-4 col-4">'+ "New message received.<br>" + "From: " + message.from + " <br>" + "Content: " + message.text +  "<br>Created at: " + message.createdAt +"</div><br>";
     document.getElementById('media-list').innerHTML +=
-    '<li class="media">'+
+    '<li class="media mt-1 pt-4 mb-1 py-0">'+
     '<img class="d-flex" src="/img/user.png" alt="Generic placeholder image">'+
     '<div class="media-body">'+
     '<h5 class="mt-0 mb-1">'+message.from+'</h5>'+
@@ -41,7 +41,7 @@ socket.on('newMessage', function (message) {
 
 socket.on('newLocationMessage', function (message) {
     document.getElementById('media-list').innerHTML +=
-    '<li class="media">'+
+    '<li class="media mt-1 pt-4">'+
     '<img class="d-flex" src="/img/user.png" alt="Generic placeholder image">'+
     '<div class="media-body">'+
     '<h5 class="mt-0 mb-1">'+message.from+'</h5>'+
@@ -52,16 +52,20 @@ socket.on('newLocationMessage', function (message) {
 
 
 $('#message-form').on('submit', function (e) {
+    
+    var messageTextbox =  $('#text-input'); //to save time
+    
     e.preventDefault();
     socket.emit('createMessage', {
         from: 'User',
-        text: $('#text-input').val()
+        text: messageTextbox.val()
     }, function () {
-    
+        messageTextbox.val('');
     });
  });
 
-$('#location').on('click', function () {
+var locationButton = $('#location');
+locationButton.on('click', function () {
 
 //    document.getElementById('modal-text').innerHTML = "Unfortunately, geolocation is not supported by your browser";
 //        $("#my-modal").modal("show");
@@ -71,13 +75,18 @@ $('#location').on('click', function () {
         $("#my-modal").modal("show");
     }
     
+    locationButton.attr('disabled', 'disabled').text('Sending Location');
+   
+    
     navigator.geolocation.getCurrentPosition(function (position) {
+        locationButton.removeAttr('disabled').text('Send Location');
         socket.emit('createLocationMessage', {
            latitude: position.coords.latitude,
            longitude: position.coords.longitude
         });
         
     }, function () {
+        locationButton.removeAttr('disabled').text('Send Location');
         document.getElementById('modal-text').innerHTML = "Unable to fetch your location.";
         $("#my-modal").modal("show");
     });

@@ -1,9 +1,41 @@
-p, .input-area, #socketConnection{
+p, #socketConnection{
 /*    box-shadow:7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px black;*/
-    box-shadow:2px 3px 11px 0px rgba(0, 0, 0, 0.68), inset -1px -1px 7px 0.1px black;
+/*    box-shadow:2px 3px 11px 0px rgba(0, 0, 0, 0.68), inset -1px -1px 7px 0.1px black;*/
     border-radius:2%;
 }
 
+.left, .right{
+    min-height:100vh;
+}
+
+#media-list{
+    min-height:86vh;
+    max-height:86vh;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+
+#forms{
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-bottom-left-radius:10%;
+    border-bottom-right-radius:5%;
+}
+
+.left{
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    color: white;
+    font-size: 35px;
+}
 
 h6{
     font-size:10px;
@@ -18,15 +50,18 @@ img{
 
 ul li:nth-of-type(odd){
     text-align:left;
+    color: deepskyblue;
 }
 
 ul li:nth-of-type(even){
     text-align:right;
+    color: limegreen;
 }
 
 ul li:nth-of-type(odd) img{
     order:1;
-    margin-right:5%;
+    margin-left:5%;
+    margin-right:2%;
 }
 
 ul li:nth-of-type(odd) .media-body{
@@ -36,6 +71,7 @@ ul li:nth-of-type(odd) .media-body{
 ul li:nth-of-type(even) img{
     order:2;
     margin-left:5%;
+    margin-right:2%;
 }
 
 ul li:nth-of-type(even) .media-body{

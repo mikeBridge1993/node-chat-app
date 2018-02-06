@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="container text-white">
+    <div class="container-fluid">
 <!--
        <div class="row">
             <div class="col text-center mb-5">
@@ -26,30 +26,38 @@
             </div>
         </div>
 -->
-        <div class="row mt-5" id="ul-row">
-            <div class="col-6 text-center">
-                <div class="lead bg-light text-primary my-1 py-5" id="socketConnection">
-                    <ul class="list-unstyled ml-5 mr-5", id="media-list">
-                    </ul>
-                </div>              
+        <div class="row mt-0 pt-0" id="row">
+            <div class="col-2 left text-center">
+                <p class="lead mt-1 mb-4 pt-5">Welcome to the Chat APP!</p>             
             </div>
-            <div class="col-6 text-center">
-                <div class="lead bg-light text-primary">
-                    <div class="input-area bg-primary">
+            <div class="col-10">
+                <div class="input-area row d-flex" id="forms">
+                    <div class="col-10">
                         <form id="message-form">
-                            <div class="form-group row my-1 pt-5">
-                                <div class="col-10 offset-1">
-                                    <input class="form-control" type="text" id="text-input" placeholder="Please write your message">
-                                </div>
+                            <div class="row">
+                                 <div class="col-10">
+                                    <div class="form-group mt-1 mb-4 pt-5">
+                                        <input class="form-control" type="text" autofocus autocomplete="off" id="text-input"  placeholder="Please write your message">
+                                    </div>
+                                 </div>
+                                 <div class="col-2 pt-5 text-right">
+                                     <button type="submit" class="btn btn-success mt-1 mb-4" id="btn">Send Message</button>
+                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success mb-3 mt-1" id="btn">Send Message</button>
-                        </form>
-                        <button type="submit" class="btn btn-success mb-3 mt-1" id="location">Send Location</button>
-                    </div> 
-                </div>              
+                        </form> 
+                    </div>
+                    <div class="col-2 pt-5">
+                        <button type="submit" class="btn btn-success mt-1 mb-4" id="location">Send Location</button>   
+                    </div>
+                </div>
+                <div class="input-area row">
+                   <div class="col mt-4">
+                       <ul class="list-unstyled ml-5 mb-0 mr-5", id="media-list">
+                        </ul>
+                   </div>
+                </div>       
             </div>    
-        </div>
-        
+        </div>   
     </div>
     <!-- Modal -->
     <script src="/socket.io/socket.io.js" ></script>
