@@ -59,10 +59,16 @@
             </div>    
         </div>   
     </div>
+    <script src="/socket.io/socket.io.js" ></script>
+    <script src ="/js/libs/jquery-3.3.1.min.js"></script> 
+    <script src ="/js/libs/moment.js"></script> 
+    <script src ="/js/libs/mustache.js"></script> 
+    <script src ="bootstrap/js/bootstrap.min.js"></script> 
+    <script src ="/js/index.js"></script>
   
     
     <script id="message-template" type="text/template">
-        <li class="media mt-1 pt-4 mb-1 py-0">
+        <li class="media mt-1 pt-4 mb-1 li-item py-0">
             <img class="d-flex" src="/img/user.png" alt="Generic placeholder image">
             <div class="media-body">
                 <h5 class="mt-0 mb-1">{{from}}</h5>
@@ -72,7 +78,7 @@
         </li>
     </script>
     <script id="location-message-template" type="text/template">
-        <li class="media mt-1 pt-4 mb-1 py-0">
+        <li class="media mt-1 li-item pt-4 mb-1 py-0">
             <img class="d-flex" src="/img/user.png" alt="Generic placeholder image">
             <div class="media-body">
                 <h5 class="mt-0 mb-1">{{from}}</h5>
@@ -81,12 +87,6 @@
             </div>
         </li>
     </script>
-    <script src="/socket.io/socket.io.js" ></script>
-    <script src ="/js/libs/jquery-3.3.1.min.js"></script> 
-    <script src ="/js/libs/moment.js"></script> 
-    <script src ="/js/libs/mustache.js"></script> 
-    <script src ="bootstrap/js/bootstrap.min.js"></script> 
-    <script src ="/js/index.js"></script>
     <!-- Modal -->
     <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
