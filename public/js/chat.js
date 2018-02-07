@@ -13,7 +13,7 @@ function scrollToBottom () {
     
     
 //    messages.scrollTop(scrollHeight);
-    if(clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight){
+    if(clientHeight + scrollTop + newMessageHeight >= scrollHeight - newMessageHeight){
         messages.scrollTop(scrollHeight);
     }
 };

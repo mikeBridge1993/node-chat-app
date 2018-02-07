@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat | ChatApp </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" charset="UTF-8">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style-chatpage.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+<!--
+       <div class="row">
+            <div class="col text-center mb-5">
+                <form id="message-form">
+                    <div class="input-area bg-primary">
+                        <div class="form-group row mt-3 pt-5">
+                          <label for="example-text-input" class="col-4 col-form-label">Text</label>
+                          <div class="col-7">
+                            <input class="form-control" type="text" id="text-input" placeholder="Please write your message">
+                          </div>
+                        </div>
+                    <button type="submit" class="btn btn-success mb-3" id="btn">Submit</button>
+                    </div>  
+                </form>          
+            </div>
+        </div>
+-->
+        <div class="row mt-0 pt-0" id="row">
+            <div class="col-2 left text-center">
+                <p class="lead mt-1 mb-4 pt-5">Welcome to the Chat APP!</p>             
+            </div>
+            <div class="col-10">
+                <div class="input-area row d-flex" id="forms">
+                    <div class="col-10">
+                        <form id="message-form">
+                            <div class="row">
+                                 <div class="col-10">
+                                    <div class="form-group mt-1 mb-4 pt-5">
+                                        <input class="form-control" type="text" autofocus autocomplete="off" id="text-input"  placeholder="Please write your message">
+                                    </div>
+                                 </div>
+                                 <div class="col-2 pt-5 text-right">
+                                     <button type="submit" class="btn btn-success mt-1 mb-4" id="btn">Send Message</button>
+                                 </div>
+                            </div>
+                        </form> 
+                    </div>
+                    <div class="col-2 pt-5">
+                        <button type="submit" class="btn btn-success mt-1 mb-4" id="location">Send Location</button>   
+                    </div>
+                </div>
+                <div class="input-area row">
+                   <div class="col mt-4">
+                       <ul class="list-unstyled ml-5 mb-0 mr-5", id="media-list">
+                        </ul>
+                   </div>
+                </div>       
+            </div>    
+        </div>   
+    </div>
+    <script src="/socket.io/socket.io.js" ></script>
+    <script src ="/js/libs/jquery-3.3.1.min.js"></script> 
+    <script src ="/js/libs/moment.js"></script> 
+    <script src ="/js/libs/mustache.js"></script> 
+    <script src ="bootstrap/js/bootstrap.min.js"></script> 
+    <script src ="/js/chat.js"></script>
+  
+    
+    <script id="message-template" type="text/template">
+        <li class="media mt-1 pt-4 mb-1 li-item py-0">
+            <img class="d-flex" src="/img/user.png" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">{{from}}</h5>
+                <h6 class="mt-0 mb-1">{{createdAt}}</h6>
+                {{text}}
+            </div>
+        </li>
+    </script>
+    <script id="location-message-template" type="text/template">
+        <li class="media mt-1 li-item pt-4 mb-1 py-0">
+            <img class="d-flex" src="/img/user.png" alt="Generic placeholder image">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1">{{from}}</h5>
+                <h6 class="mt-0 mb-1">{{createdAt}}</h6>
+                <a target="_blank" href="{{url}}" class="mt-0 mb-1">My current location</a>
+            </div>
+        </li>
+    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modal-text">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>  
+</body>            
+</html>
