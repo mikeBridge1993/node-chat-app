@@ -11,7 +11,7 @@ describe('generateMessage Tests', () => {
    });
 });
 
-describe('generateLocationMessage', () => {
+describe('generateLocationMessage Tests', () => {
    it('should generate correct location object', () => {
        var obj = generateLocationMessage("Admin", 35, 34);
        

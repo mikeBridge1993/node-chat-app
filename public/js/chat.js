@@ -19,11 +19,26 @@ function scrollToBottom () {
 };
 
 socket.on('connect', function () {
-//    document.getElementById('socketConnection').innerHTML = "Connected to a server."
+    var params = jQuery.deparam(window.location.search);
+    socket.emit('join', params, function (err) {
+        if(err){
+            alert(err);
+            window.location.href = '/';
+        } else {
+            console.log('No error');
+        }
+    });
+});
+
+socket.on('updateUserList', function (list) {
+    document.getElementById('users-list').innerHTML ="";
+    list.forEach(function (el) {
+       document.getElementById('users-list').innerHTML += '<li>'+el+'</li><br>'
+   });
 });
 
 socket.on('disconnect', function () { 
-   document.getElementById('media-list').innerHTML += "Disconnected from the server."
+//   document.getElementById('media-list').innerHTML += "Disconnected from the server."
 });
 
 

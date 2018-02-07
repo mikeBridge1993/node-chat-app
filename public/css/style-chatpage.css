@@ -4,6 +4,10 @@ p, #socketConnection{
     border-radius:2%;
 }
 
+#users-list{
+    font-size:25px;
+}
+
 .left, .right{
     min-height:100vh;
 }
@@ -48,33 +52,33 @@ img{
     box-shadow:1px 3px 12px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px black;
 }
 
-ul li:nth-of-type(odd){
+#media-list li:nth-of-type(odd){
     text-align:left;
     color: deepskyblue;
 }
 
-ul li:nth-of-type(even){
+#media-list li:nth-of-type(even){
     text-align:right;
     color: limegreen;
 }
 
-ul li:nth-of-type(odd) img{
+#media-list li:nth-of-type(odd) img{
     order:1;
     margin-left:5%;
     margin-right:2%;
 }
 
-ul li:nth-of-type(odd) .media-body{
+#media-list li:nth-of-type(odd) .media-body{
     order:2;
 }
 
-ul li:nth-of-type(even) img{
+#media-list li:nth-of-type(even) img{
     order:2;
     margin-left:5%;
     margin-right:2%;
 }
 
-ul li:nth-of-type(even) .media-body{
+#media-list li:nth-of-type(even) .media-body{
     order:1;
 }
 
