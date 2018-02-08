@@ -29,8 +29,7 @@ io.on('connection', (socket) => {
         socket.join(params.room);
         users.removeUser(socket.id);
         users.addUser(socket.id, params.name, params.room);
-        io.to(params.room).emit('updateUserList', users.getUserList(params.room));
-        
+        io.to(params.room).emit('updateUserList', users.getUserList(params.room), params.room);
         socket.emit('newMessage', generateMessage("Admin", "Welcome to the chat app"));
         socket.broadcast.to(params.room).emit('newMessage',  generateMessage("Admin", "One user joined the session"));
         callback();
@@ -38,13 +37,22 @@ io.on('connection', (socket) => {
     });
     
     socket.on('createLocationMessage', (coords) => {
-        console.log(coords);
-        io.emit('newLocationMessage', generateLocationMessage("Admin", coords.latitude, coords.longitude));
+        var user = users.getUser(socket.id);
+        
+        if(user){
+            io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords.latitude, coords.longitude)); 
+        }
+        
     });
     
     socket.on('createMessage', (message,  callback) => {
-        console.log("Create message", message);
-        io.emit('newMessage', generateMessage(message.from, message.text)); //send message created by a specific user, back to all the users connected
+        var user = users.getUser(socket.id);
+        
+        if(user && isRealString(message.text)){
+            io.to(user.room).emit('newMessage', generateMessage(user.name, message.text)); 
+        }
+        
+//        io.emit('newMessage', generateMessage(message.from, message.text)); //send message created by a specific user, back to all the users connected
         callback('This is from the Server'); //runs the function passed as argument by the user i.e. acknowledgment
      });   
     
@@ -52,7 +60,7 @@ io.on('connection', (socket) => {
         var user = users.removeUser(socket.id);
        
         if(user) {
-            io.to(user.room).emit('updateUserList', users.getUserList(user.room));
+            io.to(user.room).emit('updateUserList', users.getUserList(user.room), user.room);
             io.to(user.room).emit('newMessage', generateMessage('Admin', user.name + " has left the session."));
         }
     });

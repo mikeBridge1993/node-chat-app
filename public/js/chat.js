@@ -30,7 +30,8 @@ socket.on('connect', function () {
     });
 });
 
-socket.on('updateUserList', function (list) {
+socket.on('updateUserList', function (list, room) {
+    document.getElementById('room-name').innerHTML = room;
     document.getElementById('users-list').innerHTML ="";
     list.forEach(function (el) {
        document.getElementById('users-list').innerHTML += '<li>'+el+'</li><br>'
@@ -67,7 +68,6 @@ $('#message-form').on('submit', function (e) {
     
     e.preventDefault();
     socket.emit('createMessage', {
-        from: 'User',
         text: messageTextbox.val()
     }, function () {
         messageTextbox.val('');
