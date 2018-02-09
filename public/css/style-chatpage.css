@@ -47,11 +47,12 @@ h6{
 
 img{
     border-radius:15%;
-    height:110px;
-    width:110px;
+    height:70px;
+    width:70px;
     box-shadow:1px 3px 12px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px black;
 }
 
+/*
 #media-list li:nth-of-type(odd){
     text-align:left;
     color: deepskyblue;
@@ -81,6 +82,21 @@ img{
 #media-list li:nth-of-type(even) .media-body{
     order:1;
 }
+*/
+
+#media-list li{
+    text-align:left;
+/*    color: deepskyblue;*/
+}
 
 
+#media-list li img{
+    order:1;
+    margin-left:5%;
+    margin-right:2%;
+}
+
+#media-list li .media-body{
+    order:2;
+}
 

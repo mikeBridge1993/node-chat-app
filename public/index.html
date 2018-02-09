@@ -10,16 +10,23 @@
 </head>
 <body>
     <div class="container-fluid text-primary my-5 py-5">
-             <div class="col-4 offset-4">
-                <form class="form-signin" action="/chat.html">
-                    <h2 class="form-signin-heading text-center" id="signin-text">Join a Chat</h2>
-                    <label for="name" class="sr-only">Display name</label>
-                    <input type="text" name="name" id="name" class="form-control mt-4 mb-4" placeholder="Display name" required="" autofocus/>
+         <div class="col-4 offset-4">
+            <form class="form-signin" action="/chat.html">
+                <h2 class="form-signin-heading text-center" id="signin-text">Join a Chat</h2>
+                <label for="name" class="sr-only">Display name</label>
+                <input type="text" name="name" id="name" class="form-control my-5 py-2" placeholder="Display name" required="" autofocus/>
+                <div class="input-group my-5">
+                    <input type="text" name="room" id="room" class="form-control py-2" aria-label="Text input with dropdown button" placeholder="Room name" required=""/>
                     <label for="room" class="sr-only">Room name</label>
-                    <input type="text" name="room" id="room" class="form-control mt-4 mb-4" placeholder="Room name" required=""/>
-                    <button class="btn btn-lg btn-primary btn-block mt-4 mb-4 col-6 offset-3">Join</button>
-                </form>
-            </div>
+                    <div class="input-group-append">
+                        <button id="btn-dropdown" class="btn btn-outline-secondary dropdown-toggle py-2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                        <div class="dropdown-menu" id="rooms-dropdown" style="width:100%">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-lg my-5 py-2 btn-primary btn-block mt-4 mb-4 col-6 offset-3">Join</button>
+            </form>
+        </div>
     </div>
 </body>
     <script src="/socket.io/socket.io.js" ></script>
@@ -27,5 +34,11 @@
     <script src ="/js/libs/moment.js"></script> 
     <script src ="/js/libs/mustache.js"></script> 
     <script src ="bootstrap/js/bootstrap.min.js"></script> 
-    <script src ="/js/chat.js"></script>
+    <script src ="/js/index.js"></script>
+    <script>
+        $('.dropdown-menu').on("click", function(e) {
+            $('#room').val(e.target.innerHTML);
+        });
+        
+    </script>
 </html>

@@ -3,7 +3,15 @@ class Users {
         this.users = [];
     }
     addUser (id, name, room) {
-        var user = {id, name, room};
+        
+        function getColor() {
+             var index =  Math.floor(Math.random() * 10) + 1;
+             var color = ['#FF6633', '#FFB399', '#FF33FF', 'red', '#00B3E6', '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D'][index];
+             return color;
+        }
+        
+        var user = {id, name, room, color: getColor()};
+        
         this.users.push(user);
         return user;
     }

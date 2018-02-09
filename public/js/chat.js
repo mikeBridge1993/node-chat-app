@@ -20,6 +20,7 @@ function scrollToBottom () {
 
 socket.on('connect', function () {
     var params = jQuery.deparam(window.location.search);
+    params.room = params.room.toLowerCase();
     socket.emit('join', params, function (err) {
         if(err){
             alert(err);
@@ -32,10 +33,17 @@ socket.on('connect', function () {
 
 socket.on('updateUserList', function (list, room) {
     document.getElementById('room-name').innerHTML = room;
+    
     document.getElementById('users-list').innerHTML ="";
     list.forEach(function (el) {
        document.getElementById('users-list').innerHTML += '<li>'+el+'</li><br>'
-   });
+    });
+    
+//    //Get list of all the rooms that are currently being used, to update dropdown menu on join page
+//    document.getElementById('rooms-dropdown').innerHTML ="";
+//    list.forEach(function (el) {
+//       document.getElementById('rooms-dropdown').innerHTML += '<a class="dropdown-item">'+el.room+'</a><br>'
+//    });
 });
 
 socket.on('disconnect', function () { 
@@ -46,7 +54,7 @@ socket.on('disconnect', function () {
 socket.on('newMessage', function (message) {  
     var formattedTime = moment(message.createdAt).format('h:mm a');
     var template = document.getElementById('message-template').innerHTML;
-    var html = Mustache.render(template, {text: message.text, from: message.from, createdAt: formattedTime});
+    var html = Mustache.render(template, {text: message.text, from: message.from, createdAt: formattedTime, color: message.color});
     
     document.getElementById('media-list').innerHTML += html;
     scrollToBottom();
